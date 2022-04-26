@@ -6,8 +6,6 @@ use MyProject\Models\Users\User;
 use MyProject\Models\Users\UsersAuthService;
 use MyProject\View\View;
 
-//удалили конструкторы в MainController и в ArticlesController и отнаследовались от абстрактного контраллера,
-// свойства user и view теперь с типом protected – они будут доступны в наследниках
 abstract class AbstractController
 {
     /** @var View */
@@ -20,8 +18,7 @@ abstract class AbstractController
     {
         $this->user = UsersAuthService::getUserByToken();
         $this->view = new View(__DIR__ . '/../../../templates');
-        $this->view->setVar('user', $this->user);//теперь можем в контрол-х прямо в конструкторах задать нужные переменные благодаря setVar
-        //И добавить в шапке сайта (в шаблонах) вывод пользователя, если он был передан во View:
+        $this->view->setVar('user', $this->user);
     }
 
     protected function getInputData()
