@@ -1,0 +1,32 @@
+$dbh =
+    new \PDO(
+        'mysql:host=localhost;dbname=db',
+        'root',
+        'root'
+    );
+$dbh->exec('SET NAMES UTF8');//вып вн команду
+//Подготавливает запрос к выполнению и возвращает связанный с этим запросом объект
+$stm = $dbh->prepare('INSERT INTO users (`email`, `name`) VALUES (:email, :name)');
+$stm->bindValue('email', 'x100@php.zone');//Связывает параметр с заданным значением
+$stm->bindValue('name', 'Вячеслав');
+
+$stm = $dbh->prepare('SELECT * FROM `users` WHERE name=:name');
+$stm->bindValue('name', 'Ваня');
+$stm->execute(); //Запускает подготовленный запрос на выполнение
+$allUsers = $stm->fetchAll();//Возвращает массив, содержащий все строки результирующего набора
+//var_dump($allUsers);
+?>
+<table border="1">
+    <tr>
+        <td>id</td>
+        <td>Имя</td>
+        <td>Email</td>
+    </tr>
+    <?php foreach ($allUsers as $user): ?>
+        <tr>
+            <td><?= $user['id'] ?></td>
+            <td><?= $user['name'] ?></td>
+            <td><?= $user['email'] ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
