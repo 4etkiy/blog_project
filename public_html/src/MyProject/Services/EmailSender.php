@@ -2,7 +2,6 @@
 
 namespace MyProject\Services;
 
-//require __DIR__ . '/../../../templates/main/userActivation.php';
 use MyProject\Models\Users\User;
 
 class EmailSender
