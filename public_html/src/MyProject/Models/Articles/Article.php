@@ -60,13 +60,6 @@ class Article extends ActiveRecordEntity
         $this->text = $text;
     }
 
-//    /**
-//     * @param string $int
-//     */
-//    public function setAuthor(User $author): void
-//    {
-//        $this->authorId = $author->getId();
-//    }
     /**
      * @param User $user
      */
@@ -120,38 +113,8 @@ class Article extends ActiveRecordEntity
         return $this;
     }
 
-    //LazyLoad (ленивая загрузка) – это когда данные не подгружаются до тех пор, пока их не запросят.
     protected static function getTableName(): string
     {
         return 'articless';
     }
 }
-
-//class Article
-//{
-//    private $title;
-//    private $text;
-//    private $author;
-//
-//    public function __construct(string $title, string $text, User $author)
-//    {
-//        $this->title = $title;
-//        $this->text = $text;
-//        $this->author = $author;
-//    }
-//
-//    public function getTitle(): string
-//    {
-//        return $this->title;
-//    }
-//
-//    public function getText(): string
-//    {
-//        return $this->text;
-//    }
-//
-//    public function getAuthor(): User
-//    {
-//        return $this->author;
-//    }
-//}
