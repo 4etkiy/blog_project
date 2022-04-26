@@ -145,7 +145,6 @@ class User extends ActiveRecordEntity
         }
 
         if (!password_verify($loginData['password'], $user->getPasswordHash())) {//password_verify — Проверяет, соответствует ли пароль хешу
-            //password_verify(string $password, string $hash): bool password-Пользовательский пароль, hash-Хеш,созданный функцией password_hash()
             throw new InvalidArgumentException('Неправильный пароль');
         }
 
@@ -169,18 +168,3 @@ class User extends ActiveRecordEntity
         return 'ussers';
     }
 }
-
-//class User
-//{
-//    private $name;
-//
-//    public function __construct(string $name)
-//    {
-//        $this->name = $name;
-//    }
-//
-//    public function getName(): string
-//    {
-//        return $this->name;
-//    }
-//}
