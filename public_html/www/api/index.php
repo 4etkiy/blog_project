@@ -1,15 +1,6 @@
 <?php
 require __DIR__ . '/../../vendor/autoload.php';
-//JSON Formatter расширение в браузере добавляет форматирование, чтобы ответ было легче воспринимать человеку.
-//$entity = [
-//    'kek' => 'cheburek',
-//    'lol' => [
-//        'foo' => 'bar'
-//    ]
-//];
-//когда сервер отвечает в фомате JSON, стоит отправлять соответствующий заголовок клиенту
-//header('Content-type: application/json; charset=utf-8');
-//echo json_encode($entity);//позволяет представить какую-то сущность в json-формате
+
 try {//пишем фронт-контроллер для API.
     $route = $_GET['route'] ?? '';
     $routes = require __DIR__ . '/../../src/routes_api.php';
