@@ -23,37 +23,9 @@ class ArticlesApiController extends AbstractController
         ]);
     }
 
-//Здесь php://input – это входной поток данных. Именно из него мы и будем получать JSON из запроса.
-// file_get_contents – читает данные из указанного места, в нашем случае из входного потока.
-// А json_decode декодирует json в структуру массива. После чего мы просто выводим массив с помощью var_dump().
-//    public function add()
-//    {
-//        $input = json_decode(
-//            file_get_contents('php://input'),
-//            true
-//        );
-//        var_dump($input);
-//    }
-
-    //в postman post http://phpzone/www/api/articles/add в body raw
-//{
-//"articles":[
-//{
-//"name": "Измененное название статьи",
-//"test": "Измененный текст статьи",
-//"author_id": "1"
-//}
-//]
-//}
-
     public function add()
-    {//во всех контроллерах мы сможем получать входные данные вот так
-//        $input = json_decode(
-//            file_get_contents('php://input'),
-//            true
-//        );
+    {//во всех контроллерах мы сможем получать входные данные
         $input = $this->getInputData();
-        //сделаем функционал, который позволит сохрянять в базу данных статью, пришедшую в формате JSON
         $articleFromRequest = $input['articles'][0];
         $authorId = $articleFromRequest['author_id'];
         $author = User::getById($authorId);
@@ -62,8 +34,6 @@ class ArticlesApiController extends AbstractController
         $article->save();
 
         header('Location: /www/api/articles/' . $article->getId(), true, 302);
-        //header('Location: /www/articles/' . $article->getId(), true, 302);
         var_dump($input);
     }
-
 }
