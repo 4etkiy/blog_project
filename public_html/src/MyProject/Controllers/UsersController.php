@@ -12,17 +12,6 @@ use MyProject\Services\EmailSender;
 
 class UsersController extends AbstractController
 {
-    //удалили конструктор и отнаследовались от абстрактного контраллера,
-    // свойства user и view теперь с типом protected – они будут доступны в наследниках
-
-//    /** @var View */
-//    private $view;
-//
-//    public function __construct()
-//    {
-//        $this->view = new View(__DIR__ . '/../../../templates');
-//    }
-
     public function signUp()
     {
         if (!empty($_POST)) {
@@ -74,13 +63,6 @@ class UsersController extends AbstractController
         } catch (ActivationException $e) {
             $this->view->renderHtml('users/activationFailed.php', ['error' => $e->getMessage()]);
         }
-
-//        $user = User::getById($userId);
-//        $isCodeValid = UserActivationService::checkActivationCode($user, $activationCode);
-//        if ($isCodeValid) {
-//            $user->activate();
-//            echo 'OK!';
-//        }
     }
 
     public function login()
