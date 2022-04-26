@@ -18,26 +18,11 @@ class MainController
     {
         $this->user = UsersAuthService::getUserByToken();
         $this->view = new View(__DIR__ . '/../../../templates');
-        $this->view->setVar('user', $this->user);//теперь можем в контрол-х прямо в конструкторах задать нужные переменные благодаря setVar
-        //И добавить в шапке сайта (в шаблонах) вывод пользователя, если он был передан во View:
+        $this->view->setVar('user', $this->user);
     }
 
     public function main()
     {
-        //$articles = $this->db->query('SELECT * FROM `articless`;', [], Article::class);
-        //$articles = Article::findAll();
-//        $articles =
-//            [
-//                ['name' => 'Статья 1', 'text' => 'Текст статьи 1'],
-//                ['name' => 'Статья 2', 'text' => 'Текст статьи 2'],
-//            ];
-//        $this->view->renderHtml('main/main.php', [
-//            'articles' => $articles,
-//            'pagesCount' => Article::getPagesCount(5),//передадим в шаблон число страниц.
-//            'user' => UsersAuthService::getUserByToken()//передаем пользователя,
-//            // при входе на каждого пользователья создается кука, она нам нужна пока мы серфим по сайту
-//        ]);
-        //include __DIR__ . '/../../../templates/main/main.php';
         $this->page(1);
     }
 
