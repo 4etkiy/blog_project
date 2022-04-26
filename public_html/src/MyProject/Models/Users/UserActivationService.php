@@ -10,7 +10,7 @@ class UserActivationService
 
     public static function createActivationCode(User $user): string
     {
-        // Генерируем случайную последовательность символов, о функциях почитайте в документации
+        // Генерируем случайную последовательность символов
         $code = bin2hex(random_bytes(16));
 
         $db = Db::getInstance();
